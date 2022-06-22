@@ -7,6 +7,23 @@ Void::Void(int xCenter, int yCenter, int radius)
 	this->radius = radius;
 }
 
+void Void::reset()
+{
+	xCenter = 40;
+	yCenter = 20;
+	movementBuffer = 0;
+}
+
+int Void::getMovementBuffer()
+{
+	return movementBuffer;
+}
+
+void Void::setMovementBuffer(int movementBuffer)
+{
+	this->movementBuffer = movementBuffer;
+}
+
 int Void::getCenterX()
 {
 	return xCenter;

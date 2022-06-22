@@ -2,6 +2,7 @@
 
 Wall::Wall(int xBegin, int yBegin, int xEnd, int yEnd)
 {
+    setBegin = true;
     this->xBegin = xBegin;
     this->yBegin = yBegin;
     this->xEnd = xEnd;
@@ -46,4 +47,14 @@ void Wall::setEndX(int xEnd)
 void Wall::setEndY(int yEnd)
 {
     this->yEnd = yEnd;
+}
+
+bool Wall::getSetBegin()
+{
+    return setBegin;
+}
+
+void Wall::setSetBegin()
+{
+    setBegin = !setBegin;
 }

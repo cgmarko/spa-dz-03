@@ -26,6 +26,7 @@ private:
 	double lastRelease = -1;
 	vector<photonParticle> photonStream;
 public:
+	void reset();
 	int getMovementBuffer(int i);
 	void setMovementBuffer(int movementBuffer, int i);
 	bool getFlush();

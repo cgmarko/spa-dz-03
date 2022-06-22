@@ -1,5 +1,13 @@
 #include "Photon.h"
 
+void Photon::reset()
+{
+     flush = false;
+     photonBuffer = 0;
+     lastRelease = -1;
+    photonStream.clear();
+}
+
 int Photon::getMovementBuffer(int i)
 {
     return photonStream[i].movementBuffer;

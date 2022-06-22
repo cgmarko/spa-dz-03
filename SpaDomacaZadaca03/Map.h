@@ -11,6 +11,7 @@ private:
 	pair<int, int> blackHole;
 	int sizeX, sizeY;
 	int xWallStart, yWallStart, xWallEnd, yWallEnd;
+	bool gameStarted;
 public:
 	Map(int x, int y, int xSource, int ySource, int xVoid, int yVoid, int xWallStart, int yWallStart, int xWallEnd, int yWallEnd);
 	void resetMap();
@@ -29,5 +30,6 @@ public:
 	bool rightOfWall(int currentX);
 	pair<int, int> getBlackHole();
 	void setBlackHole(int x, int y);
+	void fullReset(int xWallStart, int yWallStart, int xWallEnd, int yWallEnd);
 };
 

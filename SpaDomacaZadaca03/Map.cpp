@@ -412,3 +412,12 @@ void Map::setBlackHole(int x, int y)
 {
 	blackHole = make_pair(x, y);
 }
+
+void Map::fullReset(int xWallStart, int yWallStart, int xWallEnd, int yWallEnd)
+{
+	this->xWallStart = xWallStart;
+	this->xWallEnd = xWallEnd;
+	this->yWallStart = yWallStart;
+	this->yWallEnd = yWallEnd;
+	resetMap();
+}

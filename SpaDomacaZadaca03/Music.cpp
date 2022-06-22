@@ -10,10 +10,27 @@ void Music::laser()
 
 }
 
+void Music::menuSwitch()
+{
+}
+
 void Music::backgroundMain()
 {
-    if (!music.openFromFile("retro-platforming.ogg"))
+    if (!music.openFromFile("a-bit-of-hope.ogg"))
         return;
+    music.setVolume(10);
     music.play();
     music.setLoop(true);
+}
+
+void Music::volumeDown()
+{
+    music.setVolume(10);
+ 
+}
+
+void Music::volumeUp()
+{
+    music.setVolume(100);
+
 }

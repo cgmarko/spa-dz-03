@@ -10,6 +10,7 @@
 #include "Map.h"
 #include "Music.h"
 #include "Intro.h"
+#include "Menu.h"
 
 
 
@@ -27,6 +28,7 @@ int main()
 	int yWallBegin = 1;
 	int xWallEnd = 25;
 	int yWallEnd = 10;
+	Menu menu;
 	Intro intro;
 	Music music;
 	Map gravityField(xSize, ySize, xSource, ySource, xVoid, yVoid, xWallBegin, yWallBegin, xWallEnd, yWallEnd);
@@ -48,14 +50,19 @@ int main()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
+			if (event.type == sf::Event::KeyPressed)
+			{
+				keyboard.resolveKeyboard(event, image, photon, star, gravityField, wall, darkVoid, menu, music);
+			}
+			
 			if (event.type == sf::Event::Closed)
 				window.close();
-			keyboard.resolveKeyboard(event, image, photon, star, gravityField, wall, darkVoid);
+			
 
 		}
 
 		window.clear();
-		image.draw(photon, star, bubble, darkVoid, wall, gravityField, music);
+		image.draw(photon, star, bubble, darkVoid, wall, gravityField, music, menu);
 		window.display();
 	}
 
