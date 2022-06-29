@@ -83,11 +83,11 @@ sf::CircleShape bubbleShape(double t, int maxRadius, sf::Color color, int xPosit
 	maxRadius = maxRadius / 2;
 	int radius;
 	double t_ = 2 * (t - (int)t);
-	if (t_ <= 1)
+	if (t_ <= 1.1)
 	{
 		radius = maxRadius * t_;
 		bubbleShape.setFillColor(sf::Color(color));
-		bubbleShape.setPosition(xPosition - radius + t_ * xVelocity + maxRadius / 2, yPosition - radius + yVelocity + maxRadius / 2);
+		bubbleShape.setPosition(xPosition - radius + t_ * xVelocity + maxRadius / 2, yPosition - radius + t_ * yVelocity + maxRadius / 2);
 		bubbleShape.setRadius(radius);
 
 
@@ -156,6 +156,25 @@ void Image::drawMenu(Menu& menu)
 	backgroundColor.setSize(sf::Vector2f(1600, 800));
 	window->draw(backgroundColor);
 
+
+	sf::RectangleShape dot;
+	dot.setSize(sf::Vector2f(100, 100));
+
+
+
+	for (int i = -60; i < 60; i++)
+	{
+		for (int j = -30; j < 30; j++)
+		{
+			dot.setFillColor(sf::Color(255 * abs(sin(getTime())), 255 * sin(j*i), 255 * cos(i + j), 10));
+			dot.setPosition(750 + (i * 16 - 50 * cos(getTime() + j) + 50 * sin(getTime())), 350 + (-50 * cos(getTime() + i) + j * 16));
+			window->draw(dot);
+		}
+	}
+
+
+
+
 	sf::Font font;
 	if (!font.loadFromFile("OpenSans.ttf"))
 	{
@@ -200,20 +219,6 @@ void Image::drawMenu(Menu& menu)
 	text.setString(menu.getCurrentSelect().second);
 	text.setPosition(120 - 20, 600 + 55 * menu.getCurrentSelect().first);
 	window->draw(text);
-
-	sf::CircleShape dot;
-	dot.setRadius(1);
-	dot.setFillColor(sf::Color::Black);
-	for (int i = -50; i < 50; i++)
-	{
-		for (int j = -25; j < 25; j++)
-		{
-			dot.setPosition(800 + (i * 16 + 5 * sin(getTime() + abs(50 - i)) - 50 * cos(getTime() + j) + 50 * sin(getTime())), 400 + (-50 * cos(getTime() + i) + j * 16 + 5 * cos(getTime() + abs(25 - j))));
-			window->draw(dot);
-		}
-	}
-
-
 
 
 }
@@ -263,7 +268,7 @@ void Image::drawWall(Photon& photon, Star& star, Bubble& bubble, Void& darkVoid,
 	int yMove = 10 * sin(getTime() * 7);
 	radius = 4;
 	wallShape.setRadius(radius);
-	wallShape.setFillColor(sf::Color(sin(getTime()) * 127 + 128, sin(getTime() + PI / 3) * 127 + 128, sin(getTime() - PI / 3) * 127 + 128));
+	wallShape.setFillColor(sf::Color(sin(getTime() + PI / 3) * 105 + 150, sin(getTime() + PI * 2 / 3) * 105 + 150, sin(getTime() + PI) * 105 + 150));
 
 	for (int i = wall.getBeginX(); i < wall.getEndX() + 1; i++)
 	{
@@ -282,7 +287,7 @@ void Image::drawWall(Photon& photon, Star& star, Bubble& bubble, Void& darkVoid,
 				}
 			}
 			window->draw(wallShape);
-			wallShape.setFillColor(sf::Color(sin(getTime()) * 127 + 128, sin(getTime() + PI / 3) * 127 + 128, sin(getTime() - PI / 3) * 127 + 128));
+			wallShape.setFillColor(sf::Color(sin(getTime() + PI/3) * 105 + 150, sin(getTime() + PI * 2 / 3) * 105 + 150, sin(getTime() + PI) * 105 + 150));
 		}
 	}
 	radius = 7;
